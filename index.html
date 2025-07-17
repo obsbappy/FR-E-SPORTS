@@ -16,24 +16,24 @@
             --text-accent: #00ffff;
             --input-border: rgba(0, 255, 255, 0.2);
             --input-bg: rgba(255, 255, 255, 0.07);
-            --button-start: #6a0dad; 
+            --button-start: #6a0dad;
             --button-end: #008080;
             --glow-strength: 0 0 8px; /* Slightly softer glow */
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         body {
             background-color: var(--dark-bg);
             color: var(--text-light);
             overflow-x: hidden;
             min-height: 100vh;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 15% 85%, rgba(138, 43, 226, 0.06) 0%, transparent 20%),
                 radial-gradient(circle at 85% 15%, rgba(0, 255, 255, 0.06) 0%, transparent 20%),
                 url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M100 0L0 100V0H100zM0 0L100 100V0H0z" fill="%231a1a2e" opacity="0.03"/%3E%3C/svg%3E');
@@ -68,7 +68,7 @@
             50% { text-shadow: 0 0 18px var(--secondary-color), 0 0 28px var(--primary-color); transform: scale(1.04); }
             100% { text-shadow: var(--glow-strength) rgba(0,255,255,0.5); transform: scale(1); }
         }
-        
+
         @keyframes liquidBorder {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -89,7 +89,7 @@
             z-index: 9999;
             transition: opacity 1s ease-out;
         }
-        
+
         .loader-logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.8rem; /* Adjusted for mobile */
@@ -102,7 +102,7 @@
             text-shadow: var(--glow-strength) rgba(0, 255, 255, 0.5);
             display: flex;
         }
-        
+
         .loader-logo span {
             opacity: 0;
             transform: translateY(25px) scale(0.85);
@@ -150,12 +150,12 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         #mainContent.show {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-        
+
         /* --- Header --- */
         header {
             width: 100%;
@@ -167,19 +167,28 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
             position: relative;
         }
-        
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem; /* Adjusted for mobile */
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 0.15rem;
-            text-shadow: var(--glow-strength) rgba(0, 255, 255, 0.4);
-            animation: iconGlowPulse 3s ease-in-out infinite;
+
+        /* Guild Logo Styles */
+        .logo-link {
+            display: inline-block;
         }
-        
+
+        .guild-logo {
+            height: 50px; /* Default height */
+            display: block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .guild-logo:hover {
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+
+        @media (max-width: 768px) {
+            .guild-logo {
+                height: 40px; /* Smaller logo for mobile screens */
+            }
+        }
+
         /* --- Social Icons Container --- */
         .social-icons-container {
             display: flex;
@@ -215,10 +224,10 @@
             left: -100%;
             width: 300%;
             height: 300%;
-            background: conic-gradient(from 0deg at 50% 50%, 
-                                var(--primary-color), transparent 30%, 
-                                var(--secondary-color), transparent 70%, 
-                                var(--primary-color));
+            background: conic-gradient(from 0deg at 50% 50%,
+                                 var(--primary-color), transparent 30%,
+                                 var(--secondary-color), transparent 70%,
+                                 var(--primary-color));
             animation: liquidBorder 6s linear infinite;
             z-index: 0;
             opacity: 0;
@@ -240,7 +249,7 @@
             box-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--primary-color);
             border-color: var(--secondary-color);
         }
-        
+
         .social-icon-link:active {
             transform: translateY(1px) scale(0.97);
         }
@@ -264,12 +273,12 @@
             max-width: 650px; /* Max width for better mobile readability */
             animation: glowingBorder 4s ease-in-out infinite;
         }
-        
+
         .form-container:hover {
             transform: translateY(-8px); /* Less aggressive lift */
             box-shadow: 0 20px 55px rgba(0,0,0,0.7), 0 0 25px rgba(0,255,255,0.6);
         }
-        
+
         .form-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 2rem; /* Adjusted for mobile */
@@ -279,12 +288,12 @@
             letter-spacing: 0.15rem;
             text-shadow: var(--glow-strength) rgba(0, 255, 255, 0.5);
         }
-        
+
         /* --- Form Elements --- */
         .form-group {
             margin-bottom: 1.8rem; /* Adjusted */
         }
-        
+
         label {
             display: block;
             margin-bottom: 0.6rem; /* Adjusted */
@@ -294,7 +303,7 @@
             letter-spacing: 0.05rem;
             text-shadow: 0 0 2px rgba(0, 255, 255, 0.1);
         }
-        
+
         input, textarea, select {
             width: 100%;
             padding: 1rem 1.2rem; /* Adjusted for mobile */
@@ -306,19 +315,19 @@
             transition: all 0.2s ease;
             box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
         }
-        
+
         input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.2), inset 0 0 8px rgba(0, 255, 255, 0.3);
             background: rgba(0, 255, 255, 0.02);
         }
-        
+
         textarea {
             min-height: 150px; /* Adjusted */
             resize: vertical;
         }
-        
+
         /* --- Buttons --- */
         .btn {
             display: block;
@@ -341,18 +350,18 @@
             text-transform: uppercase;
             letter-spacing: 0.08rem;
         }
-        
+
         .btn:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 12px 30px rgba(138, 43, 226, 0.6), 0 0 15px var(--secondary-color);
             background: linear-gradient(45deg, var(--button-end), var(--button-start));
         }
-        
+
         .btn:active {
             transform: translateY(1px) scale(0.98);
             box-shadow: 0 4px 10px rgba(138, 43, 226, 0.2);
         }
-        
+
         .btn::after {
             content: '';
             position: absolute;
@@ -363,11 +372,11 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: all 0.5s ease-in-out;
         }
-        
+
         .btn:hover::after {
             left: 100%;
         }
-        
+
         /* --- Squad Players Section --- */
         #squadPlayers {
             display: none;
@@ -378,7 +387,7 @@
             border: 1.5px dashed rgba(0, 255, 255, 0.15);
             box-shadow: inset 0 0 10px rgba(0,255,255,0.1);
         }
-        
+
         .player-input-group {
             display: flex;
             flex-direction: column; /* Stacked on mobile */
@@ -386,14 +395,14 @@
             margin-bottom: 1.2rem; /* Adjusted */
             align-items: flex-start; /* Align to start on mobile */
         }
-        
+
         .player-input-group label {
             flex: 0 0 auto; /* Auto width on mobile */
             margin-bottom: 0.4rem; /* Added margin */
             font-size: 0.9rem; /* Adjusted */
             color: var(--secondary-color);
         }
-        
+
         .player-input-group input {
             flex: 1;
         }
@@ -410,7 +419,7 @@
                 margin-bottom: 0;
             }
         }
-        
+
         /* --- Status Message --- */
         #statusMessage {
             display: none;
@@ -422,21 +431,21 @@
             font-size: 1rem; /* Adjusted */
             animation: glowingBorder 2s ease-in-out infinite;
         }
-        
+
         .success {
             background: rgba(46, 213, 115, 0.18);
             color: #2ed573;
             border: 1px solid rgba(46, 213, 115, 0.35);
             box-shadow: 0 0 10px rgba(46, 213, 115, 0.35);
         }
-        
+
         .error {
             background: rgba(255, 71, 87, 0.18);
             color: #ff4757;
             border: 1px solid rgba(255, 71, 87, 0.35);
             box-shadow: 0 0 10px rgba(255, 71, 87, 0.35);
         }
-        
+
         /* --- Footer --- */
         footer {
             text-align: center;
@@ -446,7 +455,7 @@
             color: rgba(255,255,255,0.5);
             font-size: 0.9rem; /* Adjusted */
         }
-        
+
         .dev-credit {
             font-family: 'Orbitron', sans-serif;
             color: var(--text-accent);
@@ -454,7 +463,7 @@
             letter-spacing: 0.08rem;
             text-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
         }
-        
+
         /* --- Custom Checkbox --- */
         .checkbox-container {
             display: flex;
@@ -518,10 +527,12 @@
             <div class="loader-progress"></div>
         </div>
     </div>
-    
+
     <div id="mainContent">
         <header>
-            <div class="logo">FR E-SPORTS</div>
+            <a href="#" class="logo-link">
+                <img src="https://i.ibb.co/1JG1SFpF/Whats-App-Image-2025-07-17-at-10-32-21-b8c9b965.jpg" alt="FR E-SPORTS Logo" class="guild-logo">
+            </a>
         </header>
 
         <div class="social-icons-container">
@@ -532,51 +543,51 @@
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
-        
+
         <div class="form-container">
             <h2 class="form-title">🛡️ গিল্ড অ্যাপ্লিকেশন ফর্ম 🛡️</h2>
-            
+
             <form id="guildForm">
                 <div class="form-group">
                     <label for="playerID">🎮 প্লেয়ার আইডি</label>
                     <input type="text" id="playerID" name="playerID" placeholder="আপনার প্লেয়ার আইডি দিন" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="playerName">👤 প্লেয়ার নাম</label>
                     <input type="text" id="playerName" name="playerName" placeholder="আপনার প্লেয়ার নাম দিন" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="playerLevel">📊 প্লেয়ার লেভেল</label>
                     <input type="text" id="playerLevel" name="playerLevel" placeholder="আপনার বর্তমান লেভেল দিন" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="squadName">🔥 স্কোয়াড নাম</label>
                     <input type="text" id="squadName" name="squadName" placeholder="আপনার স্কোয়াডের নাম দিন" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="whatsapp">📱 হোয়াটসঅ্যাপ নাম্বার</label>
                     <input type="tel" id="whatsapp" name="whatsapp" placeholder="+8801XXXXXXXXX" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="fbProfile">🌐 ফেসবুক প্রোফাইল লিঙ্ক</label>
                     <input type="url" id="fbProfile" name="fbProfile" placeholder="https://facebook.com/yourprofile">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="address">🏠 ঠিকানা (ঐচ্ছিক)</label>
                     <textarea id="address" name="address" placeholder="আপনার ঠিকানা লিখুন (ঐচ্ছিক)"></textarea>
                 </div>
-                
+
                 <div class="checkbox-container">
                     <input type="checkbox" id="addSquadPlayers" name="addSquadPlayers">
                     <label for="addSquadPlayers">👥 স্কোয়াড সদস্য যুক্ত করুন</label>
                 </div>
-                
+
                 <div id="squadPlayers">
                     <div class="player-input-group">
                         <label for="player1">প্লেয়ার ১</label>
@@ -599,19 +610,19 @@
                         <input type="text" id="player5" name="player5" placeholder="পঞ্চম সদস্যের নাম">
                     </div>
                 </div>
-                
+
                 <div id="statusMessage"></div>
-                
+
                 <button type="submit" class="btn">আবেদন জমা দিন</button>
             </form>
         </div>
-        
+
         <footer>
             <p>&copy; 2023 FR E-SPORTS GUILD. সর্বস্বত্ব সংরক্ষিত।</p>
             <p>Developed with ❤️ by <span class="dev-credit">BAPPY</span></p>
         </footer>
     </div>
-    
+
     <script>
         // Loader logic
         window.addEventListener('load', function() {
@@ -630,7 +641,7 @@
                 }, 1000); // Matches loader fade-out time
             }, 2800); // Loader visible time (text animation + progress bar duration)
         });
-        
+
         // Toggle Squad Players visibility
         document.getElementById('addSquadPlayers').addEventListener('change', function() {
             const squadPlayers = document.getElementById('squadPlayers');
@@ -640,14 +651,14 @@
                 squadPlayers.style.display = 'none';
             }
         });
-        
+
         // Form Submission Logic
         document.getElementById('guildForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const statusMessage = document.getElementById('statusMessage');
             statusMessage.style.display = 'none';
-            
+
             // Get form values
             const formData = {
                 playerID: document.getElementById('playerID').value.trim(),
@@ -659,7 +670,7 @@
                 address: document.getElementById('address').value.trim(),
                 squadPlayers: []
             };
-            
+
             if(document.getElementById('addSquadPlayers').checked) {
                 for(let i = 1; i <= 5; i++) {
                     const player = document.getElementById('player' + i).value.trim();
@@ -668,7 +679,7 @@
                     }
                 }
             }
-            
+
             // Validate required fields
             if(!formData.playerID || !formData.playerName || !formData.playerLevel || !formData.squadName || !formData.whatsapp) {
                 statusMessage.textContent = '⚠️ দয়া করে সমস্ত প্রয়োজনীয় ফিল্ড পূরণ করুন!';
@@ -676,77 +687,77 @@
                 statusMessage.style.display = 'block';
                 return;
             }
-            
+
             // Discord Webhook URL - REPLACE WITH YOUR ACTUAL WEBHOOK URL
             // SECURITY NOTE: Embedding webhook URLs directly in client-side code is INSECURE.
             // For production, you should use a backend server to handle Discord API calls.
             // This example is for demonstration purposes only.
             const webhookURL = 'https://discord.com/api/webhooks/1395459387275083897/gdty0fkgaPAC9kB4zgXuXFWZt6bDEsNL92IYNpaRvKzvRyyzTTfa1FsDvfI_6eE6nS8v'; // আপনার আসল ওয়েববুক URL এখানে বসান
-            
+
             // Create Discord embed message (Highly Stylized!)
             const discordMessage = {
-                username: "FR E-SPORTS Bot 🤖", 
-                avatar_url: "https://i.imgur.com/yourBotAvatar.png", // Replace this with your bot's avatar URL
+                username: "FR E-SPORTS Bot 🤖",
+                avatar_url: "https://i.imgur.com/yourBotAvatar.png", // Replace with your bot's avatar URL if different
                 embeds: [{
-                    title: "✨ নতুন গিল্ড আবেদন জমা পড়েছে! ✨", 
+                    title: "✨ নতুন গিল্ড আবেদন জমা পড়েছে! ✨",
                     description: `একটি নতুন আবেদন এসেছে **${formData.playerName}** এর পক্ষ থেকে! গিল্ডে স্বাগত জানানোর আগে বিস্তারিত তথ্য যাচাই করে নিন।`,
-                    color: 0x8a2be2, 
-                    url: "https://discord.com/invite/your-guild-invite-link", // Replace this with your guild invite link
+                    color: 0x8a2be2,
+                    url: "https://discord.com/invite/your-guild-invite-link", // আপনার গিল্ড ইনভাইট লিঙ্ক (replace this)
                     thumbnail: {
-                        url: "https://i.imgur.com/yourGuildLogo.png" // Replace this with your guild logo URL
+                        url: "https://i.ibb.co/1JG1SFpF/Whats-App-Image-2025-07-17-at-10-32-21-b8c9b965.jpg" // আপনার গিল্ড লোগোর URL
                     },
                     author: {
-                        name: `আবেদনকারী: ${formData.playerName} (লেভেল ${formData.playerLevel})`, 
-                        icon_url: "https://i.imgur.com/yourPlayerAvatar.png", // Replace this with applicant's avatar URL
-                        url: formData.fbProfile || "https://discord.com" 
+                        name: `আবেদনকারী: ${formData.playerName} (লেভেল ${formData.playerLevel})`,
+                        icon_url: "https://i.imgur.com/yourPlayerAvatar.png", // খেলোয়াড়ের অ্যাভাটারের URL (replace this)
+                        url: formData.fbProfile || "https://discord.com"
                     },
                     fields: [
                         {
-                            name: "🆔 প্লেয়ার আইডি", 
-                            value: `\`\`\`${formData.playerID}\`\`\``, 
+                            name: "🆔 প্লেয়ার আইডি",
+                            value: `\`\`\`${formData.playerID}\`\`\``,
                             inline: true
                         },
                         {
-                            name: "🛡️ স্কোয়াড নাম", 
-                            value: `**${formData.squadName}**`, 
+                            name: "🛡️ স্কোয়াড নাম",
+                            value: `**${formData.squadName}**`,
                             inline: true
                         },
                         {
-                            name: "📞 হোয়াটসঅ্যাপ", 
-                            value: `[যোগাযোগ করুন](https://wa.me/${formData.whatsapp.replace(/\D/g,'')})`, 
+                            name: "📞 হোয়াটসঅ্যাপ",
+                            value: `[যোগাযোগ করুন](https://wa.me/${formData.whatsapp.replace(/\D/g,'')})`,
                             inline: true
                         },
                         {
-                            name: "🔗 ফেসবুক প্রোফাইল", 
+                            name: "🔗 ফেসবুক প্রোফাইল",
                             value: formData.fbProfile ? `[ভিজিট করুন](${formData.fbProfile})` : "প্রোফাইল দেওয়া হয়নি",
                             inline: true
                         },
                         {
-                            name: "🏠 ঠিকানা", 
+                            name: "🏠 ঠিকানা",
                             value: formData.address || "দেওয়া হয়নি",
                             inline: false
                         }
                     ],
                     image: {
-                        url: "https://i.ibb.co/1JG1SFpF/Whats-App-Image-2025-07-17-at-10-32-21-b8c9b965.jpg" // Replace this with your guild banner URL
+                        url: "https://i.imgur.com/yourGuildBanner.png" // আপনার গিল্ড ব্যানারের URL (replace this if you have one)
                     },
                     timestamp: new Date().toISOString(),
                     footer: {
-                        text: "FR E-SPORTS গিল্ড • জয়েন করতে ক্লিক করুন!", 
-                        icon_url: "https://i.imgur.com/yourFooterIcon.png" // Replace this with your footer icon URL
+                        text: "FR E-SPORTS গিল্ড • জয়েন করতে ক্লিক করুন!",
+                        icon_url: "https://i.ibb.co/1JG1SFpF/Whats-App-Image-2025-07-17-at-10-32-21-b8c9b965.jpg" // ফুটারে আপনার লোগো
                     }
                 }]
             };
-            
+
             // Add squad players if any
             if(formData.squadPlayers.length > 0) {
                 discordMessage.embeds[0].fields.push({
-                    name: "👥 স্কোয়াড সদস্যবৃন্দ", 
-                    value: formData.squadPlayers.map(player => `• ${player}`).join('\n'), 
+                    name: "👥 স্কোয়াড সদস্যবৃন্দ",
+                    value: formData.squadPlayers.map(player => `• ${player}`).join('\n'),
                     inline: false
                 });
             }
-            
+
             // Send to Discord
             fetch(webhookURL, {
                 method: 'POST',
