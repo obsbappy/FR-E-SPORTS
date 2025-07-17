@@ -170,17 +170,17 @@
 
         /* Guild Logo Styles */
         .logo-link {
-            display: inline-block;
+            display: inline-block; /* Ensure the link behaves like a block for styling */
         }
 
         .guild-logo {
-            height: 50px; /* Default height */
-            display: block;
-            transition: transform 0.3s ease-in-out;
+            height: 50px; /* Default height for the logo */
+            display: block; /* Ensures the image takes up its own line */
+            transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
         }
 
         .guild-logo:hover {
-            transform: scale(1.05); /* Slight scale on hover */
+            transform: scale(1.05); /* Slightly enlarge logo on hover */
         }
 
         @media (max-width: 768px) {
@@ -531,7 +531,7 @@
     <div id="mainContent">
         <header>
             <a href="#" class="logo-link">
-                <img src="https://i.ibb.co/1JG1SFpF/Whats-App-Image-2025-07-17-at-10-32-21-b8c9b965.jpg" alt="FR E-SPORTS Logo" class="guild-logo">
+                <img src="https://i.ibb.co/1JG1SFpF/Whats-App-Image-2025-07-17-at-10-32-21-b8c9b965.jpg" alt="FR E-SPORTS Guild Logo" class="guild-logo">
             </a>
         </header>
 
@@ -671,6 +671,13 @@
                 squadPlayers: []
             };
 
+            if(!formData.playerID || !formData.playerName || !formData.playerLevel || !formData.squadName || !formData.whatsapp) {
+                statusMessage.textContent = '⚠️ দয়া করে সমস্ত প্রয়োজনীয় ফিল্ড পূরণ করুন!';
+                statusMessage.className = 'error';
+                statusMessage.style.display = 'block';
+                return;
+            }
+
             if(document.getElementById('addSquadPlayers').checked) {
                 for(let i = 1; i <= 5; i++) {
                     const player = document.getElementById('player' + i).value.trim();
@@ -678,14 +685,6 @@
                         formData.squadPlayers.push(player);
                     }
                 }
-            }
-
-            // Validate required fields
-            if(!formData.playerID || !formData.playerName || !formData.playerLevel || !formData.squadName || !formData.whatsapp) {
-                statusMessage.textContent = '⚠️ দয়া করে সমস্ত প্রয়োজনীয় ফিল্ড পূরণ করুন!';
-                statusMessage.className = 'error';
-                statusMessage.style.display = 'block';
-                return;
             }
 
             // Discord Webhook URL - REPLACE WITH YOUR ACTUAL WEBHOOK URL
